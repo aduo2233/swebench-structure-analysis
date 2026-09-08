@@ -171,7 +171,8 @@ def main() -> None:
     # Fig 1: files per patch, Verified vs Full
     fig, ax = plt.subplots(figsize=(7, 4.2))
     bins = np.arange(0, max(vdf["patch_files"].max(), fdf["patch_files"].max()) + 2) - 0.5
-    ax.hist([vdf["patch_files"], fdf["patch_files"]], bins=bins, label=["SWE-bench Verified (500)", "SWE-bench full (2,294)"], color=["#2f6fed", "#9db9ee"], alpha=0.9)
+    ax.hist(fdf["patch_files"], bins=bins, label="SWE-bench full (2,294)", color="#9db9ee", alpha=0.95)
+    ax.hist(vdf["patch_files"], bins=bins, label="SWE-bench Verified (500, subset of full)", color="#2f6fed", alpha=0.95, edgecolor="white", linewidth=0.5)
     ax.set_xlabel("Files touched by the gold fix")
     ax.set_ylabel("Tasks")
     ax.set_xticks(range(0, 11))
